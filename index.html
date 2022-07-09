@@ -11,8 +11,10 @@
 
   <body>
     <div class="flex flex-col md:mx-96">
-      <div class="text-xl text-gray-500 bg-blue-100 p-4">
+      <div class="text-center text-xl text-gray-500 bg-blue-100 p-4">
         Welcome to DonkeyCrapp! (www.donkeycr.app)
+        <br />
+        Enjoy!
       </div>
       <div class="flex justify-end text-blue-700">
         <a class="cursor-pointer" href="https://github.com/thebugcatcher">- @thebugcatcher</a>
@@ -30,6 +32,7 @@
           <select x-model="item">
             <option value="carrot">Carrot</option>
             <option value="hay">Hay</option>
+            <option value="water">Water</option>
           </select>
         </div>
 
@@ -76,6 +79,11 @@
             src="./images/hay.png"
             width=30/
           >
+          <img
+            x-show="item == 'water'"
+            src="./images/water.jpg"
+            width=30/
+          >
         </div>
 
         <img
@@ -104,6 +112,11 @@
           <img
             x-show="item == 'hay'"
             src="./images/hay-poop.png"
+            width=30/
+          >
+          <img
+            x-show="item == 'water'"
+            src="./images/water-poop.jpeg"
             width=30/
           >
         </div>
