@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <!-- styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style link="./css/app.css"></style>
+  </head>
+
+  <body>
+    <div class="flex flex-col md:mx-96">
+      <div class="text-xl text-gray-500 bg-blue-100 p-4">
+        Welcome to DonkeyCrapp! (www.donkeycr.app)
+      </div>
+      <div class="flex justify-end text-blue-700">
+        <a class="cursor-pointer" href="https://github.com/thebugcatcher">- @thebugcatcher</a>
+      </div>
+
+      <br />
+      <hr />
+      <br />
+    </div>
+
+    <div x-data="{ food: true, eating: false, shit: false }" class="mx-24 flex justify-center">
+      <div class="flex flex-col">
+        <span x-show="food" class="cursor-pointer rounded p-2 bg-gray-100 text-center" @click="food = false; eating = true; setTimeout(() => { shit = true }, 2500)">
+          Feed!
+        </span>
+
+        <span x-show="shit" class="cursor-pointer rounded p-2 bg-gray-100 text-center" @click="food = true; eating= false; shit = false">
+          Re-Shit!
+        </span>
+
+        <span class="mt-16"></span>
+
+        <div
+          class="flex justify-start"
+          x-show="eating"
+        >
+          Eating..
+        </div>
+
+        <div
+          class="flex justify-start"
+          x-show="eating"
+        >
+          <br />
+        </div>
+
+        <div
+          class="flex justify-start"
+          x-show="food"
+          x-transition:leave="transition origin-top ease-out duration-500"
+          x-transition:leave-start="transform translate-y-0 opacity-100"
+          x-transition:leave-end="transform translate-y-full opacity-0"
+        >
+          <img src="./images/carrot.png" width=30/>
+        </div>
+
+        <img
+          :class="eating ? 'animate-bounce' : ''"
+          id="donkey"
+          src="./images/donkey.jpg"
+          style="z-index: -1"
+          width=120
+        />
+
+        <div
+          class="flex justify-end"
+          x-show="shit"
+          x-effect="shit && setTimeout(() => { eating = false }, 100)"
+          x-transition:enter="transition origin-top ease-out duration-500"
+          x-transition:enter-start="transform -translate-y-full opacity-0"
+          x-transition:enter-end="transform translate-y-0 opacity-100"
+          x-transition-delay="500"
+          style="margin-right: -25%;"
+        >
+          <img src="./images/poop.jpg" width=50/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
